@@ -7,7 +7,7 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "build": "tsc -p tsconfig.json",
-    "precommit": "npm test"
+    "precommit": "npm test && lint-staged"
   },
   "repository": {
     "type": "git",
@@ -38,5 +38,11 @@
       ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "testRegex": ".*\\.spec\\.ts$"
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --write --no-semi --single-quote --trailing-comma",
+      "git add"
+    ]
   }
 }
