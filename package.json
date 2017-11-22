@@ -2,11 +2,16 @@
   "name": "typescript-library-project",
   "version": "0.0.0",
   "description": "A micro library written from scatch to take advantage of power of Typescript",
-  "main": "index.js",
+  "main": "build/index.umd.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "build": "tsc -p tsconfig.json",
+    "prebuild": "rm -rf dist && rm -rf build",
+    "build": "tsc -p tsconfig.json && rollup -c rollup.config.js",
+    "postbuild": "cp dist/*.d.ts build/",
     "precommit": "npm test && lint-staged"
   },
   "repository": {
@@ -26,6 +31,8 @@
     "jest": "^21.2.1",
     "lint-staged": "^5.0.0",
     "prettier": "^1.8.2",
+    "rollup": "^0.51.8",
+    "rollup-plugin-sourcemaps": "^0.4.2",
     "ts-jest": "^21.2.3",
     "typescript": "^2.6.1"
   },
