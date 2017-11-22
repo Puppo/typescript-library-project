@@ -1,6 +1,6 @@
 {
   "name": "typescript-library-project",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A micro library written from scatch to take advantage of power of Typescript",
   "main": "build/index.umd.js",
   "typings": "build/index.d.ts",
@@ -13,7 +13,8 @@
     "prebuild": "rm -rf dist && rm -rf build",
     "build": "tsc -p tsconfig.json && rollup -c rollup.config.js",
     "postbuild": "cp dist/*.d.ts build/",
-    "precommit": "npm test && lint-staged"
+    "precommit": "npm test && lint-staged",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
